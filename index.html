@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Nayuta Toyoshima</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- 基本設定 (Reset & Variables) --- */
+        :root {
+            --primary-color: #0d47a1; /* 知的な濃い青 */
+            --accent-color: #42a5f5;  /* 明るい青 */
+            --bg-color: #f5f7fa;      /* 薄いグレー背景 */
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-sub: #666666;
+            --font-main: 'Noto Sans JP', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- レイアウト共通 --- */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        /* --- ヘッダー --- */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #1565c0);
+            color: #fff;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+
+        /* --- ヒーローセクション（自己紹介） --- */
+        .hero {
+            background-color: var(--card-bg);
+            text-align: center;
+            padding: 100px 20px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .avatar-placeholder {
+            width: 120px;
+            height: 120px;
+            background-color: var(--bg-color);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--primary-color);
+            border: 4px solid var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        .name-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .affiliation {
+            font-size: 1.2rem;
+            color: var(--text-sub);
+            font-weight: 500;
+        }
+
+        .affiliation i {
+            margin-right: 8px;
+            color: var(--accent-color);
+        }
+
+        /* --- ガクチカセクション --- */
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--accent-color);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        .gakuchika-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        /* ガクチカ：ポイント要約（3つのボックス） */
+        .process-flow {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .process-box {
+            background-color: #e3f2fd; /* 薄い青 */
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            border-top: 4px solid var(--primary-color);
+        }
+
+        .process-box i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .process-box h4 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+
+        .process-box p {
+            font-size: 0.85rem;
+            color: var(--text-sub);
+        }
+
+        /* ガクチカ：本文 */
+        .gakuchika-text {
+            text-align: justify;
+            font-size: 1.05rem;
+            line-height: 2;
+        }
+
+        .highlight {
+            background: linear-gradient(transparent 70%, #bbdefb 70%);
+            font-weight: 700;
+        }
+
+        /* --- フッター --- */
+        footer {
+            background-color: #263238;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.8rem;
+        }
+
+        /* --- レスポンシブ対応 (スマホ) --- */
+        @media (max-width: 768px) {
+            .name-title {
+                font-size: 2rem;
+            }
+            
+            .gakuchika-card {
+                padding: 30px 20px;
+            }
+
+            .process-flow {
+                grid-template-columns: 1fr; /* 縦並びにする */
+                gap: 15px;
+            }
+
+            .hero {
+                padding: 60px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <div class="site-title">My Portfolio</div>
+            <div style="font-size: 1.2rem;"><i class="fa-solid fa-code"></i></div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="avatar-placeholder">
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <h1 class="name-title">豊島 那悠太</h1>
+            <p class="affiliation">
+                <i class="fa-solid fa-university"></i> 日本大学 理工学部
+            </p>
+        </div>
+    </section>
+
+    <section id="gakuchika">
+        <div class="container">
+            <h2 class="section-title">Student Achievement</h2>
+            
+            <div class="gakuchika-card">
+                
+                <div class="process-flow">
+                    <div class="process-box">
+                        <i class="fa-solid fa-circle-exclamation"></i>
+                        <h4>課題発見</h4>
+                        <p>注文切れ時の<br>「手待ち時間」</p>
+                    </div>
+                    <div class="process-box">
+                        <i class="fa-solid fa-list-check"></i>
+                        <h4>主体的な行動</h4>
+                        <p>セルフタスクリストの<br>考案とルーティン化</p>
+                    </div>
+                    <div class="process-box">
+                        <i class="fa-solid fa-chart-line"></i>
+                        <h4>成果</h4>
+                        <p>店舗全体の<br>退勤時間短縮</p>
+                    </div>
+                </div>
+
+                <div class="gakuchika-text">
+                    <p>
+                        飲食店のホールスタッフとして、業務効率の改善に主体的に取り組みました。私の店では、注文が途切れた際の「手待ち時間」が課題だと感じていました。
+                    </p>
+                    <br>
+                    <p>
+                        そこで私は「一人でもホールをスムーズに回したい」と考え、手待ち時間を活用する<span class="highlight">「セルフタスクリスト」を考案し、実行しました。</span>具体的には、「洗い場確認」「備品補充」「閉店準備の前倒し」といった作業をルーティーン化し、徹底しました。
+                    </p>
+                    <br>
+                    <p>
+                        この取り組みを続けた結果、他のスタッフがレジ締めを行っている間に、私一人でもホールの閉店作業の大部分を終えられるようになり、<span class="highlight">店舗全体の退勤時間短縮に貢献できました。</span>この経験から、常に「今できること」を考える主体性と、自ら改善し結果を出す喜びを学びました。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Nayuta Toyoshima. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
